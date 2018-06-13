@@ -1,14 +1,14 @@
 node('maven') {
     stage('build') {
         echo 'building app :)'
-        openshiftBuild(buildConfig: 'app', showBuildLogs: 'true')
+        openshiftBuild(buildConfig: 'grell-node', showBuildLogs: 'true')
     }
     stage('verify') {
         echo 'dummy verification....'
     }
     stage('deploy') {
         input 'Manual Approval'
-        openshiftDeploy(deploymentConfig: 'app')
+        openshiftDeploy(deploymentConfig: 'grell-node')
     }
     stage('promoting to QA') {
        echo 'fake stage...'
